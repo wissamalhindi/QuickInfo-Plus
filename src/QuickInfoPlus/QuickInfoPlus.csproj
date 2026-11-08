@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <RootNamespace>QuickInfoPlus</RootNamespace>
+    <VSSDKBuildToolsAutoSetup>true</VSSDKBuildToolsAutoSetup>
+    <GeneratePkgDefFile>true</GeneratePkgDefFile>
+    <IncludeAssemblyInVSIXContainer>true</IncludeAssemblyInVSIXContainer>
+    <IncludeDebugSymbolsInVSIXContainer>true</IncludeDebugSymbolsInVSIXContainer>
+    <IncludeDebugSymbolsInLocalVSIXDeployment>true</IncludeDebugSymbolsInLocalVSIXDeployment>
+    <CopyBuildOutputToOutputDirectory>true</CopyBuildOutputToOutputDirectory>
+    <CopyOutputSymbolsToOutputDirectory>true</CopyOutputSymbolsToOutputDirectory>
+    <DeployExtension Condition="'$(DeployExtension)' == ''">false</DeployExtension>
+    <VSSDKTargetPlatformRegRootSuffix>Exp</VSSDKTargetPlatformRegRootSuffix>
+    <TargetVsixContainer>$(MSBuildThisFileDirectory)..\..\artifacts\$(Configuration)\$(MSBuildProjectName).vsix</TargetVsixContainer>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="18.9.820" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.32112.339" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.CodeAnalysis.EditorFeatures.Text" Version="4.0.1" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.0.1" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.VisualStudio.LanguageServices" Version="4.0.1" ExcludeAssets="runtime" />
+    <PackageReference Include="Nerdbank.Streams" Version="2.7.74" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.ComponentModel.Composition" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\QuickInfoPlus.Core\QuickInfoPlus.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="source.extension.vsixmanifest" SubType="Designer" />
+    <Content Include="Resources\icon.png" IncludeInVSIX="true" />
+    <Content Include="Resources\tooltip.png" IncludeInVSIX="true" />
+    <Content Include="..\..\LICENSE" Link="LICENSE.txt" TargetPath="LICENSE.txt" IncludeInVSIX="true" />
+  </ItemGroup>
+
+  <!-- The VS SDK doesn't create the folder TargetVsixContainer points to. -->
+  <Target Name="CreateVsixOutputFolder" BeforeTargets="CreateVsixContainer">
+    <MakeDir Directories="$([System.IO.Path]::GetDirectoryName('$(TargetVsixContainer)'))" />
+  </Target>
+
+</Project>

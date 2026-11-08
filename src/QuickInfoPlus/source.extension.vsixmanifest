@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+  <Metadata>
+    <Identity Id="QuickInfoPlus.29df375b-28fa-4eaa-b987-41ec1e35d417" Version="1.0.0" Language="en-US" Publisher="Wissam Al Hindi" />
+    <DisplayName>QuickInfo Plus</DisplayName>
+    <Description xml:space="preserve">Extension to add what the C# Quick Info tooltip leaves out of XML documentation: &lt;example&gt; sections and  &lt;exception&gt; descriptions, with clickable, summary-colored references and copyable code.</Description>
+    <MoreInfo>https://github.com/wissamalhindi/QuickInfo-Plus</MoreInfo>
+    <License>LICENSE.txt</License>
+    <ReleaseNotes>https://github.com/wissamalhindi/QuickInfo-Plus/releases</ReleaseNotes>
+    <Icon>Resources\icon.png</Icon>
+    <PreviewImage>Resources\tooltip.png</PreviewImage>
+    <Tags>quick info;tooltip;xml documentation;doc comments;example;exception;c#</Tags>
+  </Metadata>
+  <Installation>
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,19.0)">
+      <ProductArchitecture>amd64</ProductArchitecture>
+    </InstallationTarget>
+  </Installation>
+  <Prerequisites>
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,19.0)" DisplayName="Visual Studio core editor" />
+    <Prerequisite Id="Microsoft.VisualStudio.Component.Roslyn.LanguageServices" Version="[17.0,19.0)" DisplayName="C# and Visual Basic" />
+  </Prerequisites>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" />
+    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+  </Assets>
+</PackageManifest>

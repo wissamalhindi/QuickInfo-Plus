@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/QuickInfoPlus.Core/QuickInfoPlus.Core.csproj" />
+    <Project Path="src/QuickInfoPlus/QuickInfoPlus.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/QuickInfoPlus.Core.Tests/QuickInfoPlus.Core.Tests.csproj" />
+  </Folder>
+</Solution>
